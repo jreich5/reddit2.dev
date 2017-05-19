@@ -11,39 +11,27 @@
 
     @yield('title')
 
-	@include('styles')
+	@include('layouts.partials._styles')
 
-
-    <!-- Bootstrap Core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
 
 </head>
 
 <body>
+    
+    @include('layouts.partials._navbar')
 
     <main class="container">
-    	
     	@yield('content')    
-	
     </main>
-    
 
-	@yield('scripts')
+    @include('layouts.partials._footer')
 
-    <!-- jQuery Version 1.11.1 -->
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	@include('layouts.partials._scripts')
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-    <!-- Custom JS -->
-
-	
-
-    <script src="js/main.js"></script>
+    <!-- Site JS -->
+    <script src="/assets/js/main.js"></script>
 
 </body>
 

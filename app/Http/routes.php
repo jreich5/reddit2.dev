@@ -14,7 +14,7 @@
 // other pages
 
 Route::get('/', function () {
-    return view('pages.welcome');
+    return view('pages.home');
 });
 
 Route::get('/about', function () {
