@@ -11,10 +11,10 @@
 
     @yield('title')
 
-	@include('layouts.partials.styles')
+	@include('layouts.partials._styles')
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
 
 </head>
 
@@ -26,10 +26,12 @@
     	@yield('content')    
     </main>
 
-	@include('layouts.partials.scripts')
+    @include('layouts.partials._footer')
 
-    <!-- Custom JS -->
-    <script src="js/main.js"></script>
+	@include('layouts.partials._scripts')
+
+    <!-- Site JS -->
+    <script src="/assets/js/main.js"></script>
 
 </body>
 
