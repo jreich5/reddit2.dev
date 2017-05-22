@@ -19,3 +19,25 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->catchPhrase,
+        'content' => $faker->text(200),
+        'url' => $faker->url,
+        'image' => $faker->imageUrl(640, 480),
+        'created_by' => $faker->numberBetween(1, 50),
+        'created_at' => \Carbon\Carbon::now(),
+        'updated_at' => \Carbon\Carbon::now()
+    ];
+});
+
+$factory->define(App\Models\Vote::class, function (Faker\Generator $faker) {
+    return [
+        'user_id' => $faker->numberBetween(1, 50),
+        'post_id' => $faker->numberBetween(1, 50),
+        'vote' => $faker->boolean(50),
+        'created_at' => \Carbon\Carbon::now(),
+        'updated_at' => \Carbon\Carbon::now()
+    ];
+});
