@@ -6,11 +6,12 @@
 
 @section('content')
 	{!! Form::open(array('url' => 'auth/login')) !!}
-
+	
 		{!! Form::label('email', 'E-Mail Address', array('class' => '')) !!}
 		{!! Form::text('email') !!}
 		{!! Form::label('password', 'Password', array('class' => '')) !!}
 		{!! Form::password('password') !!}
+		{!! Form::submit('Submit') !!}
 
 	{!! Form::close() !!}
 @stop
