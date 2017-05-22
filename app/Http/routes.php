@@ -11,8 +11,7 @@
 |
 */
 
-// other pages
-
+// Pages routes
 Route::get('/', function () {
     return view('pages.home');
 });
@@ -22,7 +21,8 @@ Route::get('/about', function () {
 });
 
 
-// posts pages
+// Post article routes
+Route::resource('posts', 'PostsController');
 
 Route::get('/posts', function () {
     return view('posts.index');
@@ -41,8 +41,8 @@ Route::get('/posts/{id}/edit', function ($id) {
 });
 
 
-
-// users pages
+// User routes
+Route::resource('users', 'UsersController');
 
 Route::get('/users', function () {
     return view('users.index');
@@ -57,14 +57,17 @@ Route::get('/users/{id}', function ($id) {
 });
 
 
-// auth pages
+// Voting routes
+Route::post('/posts/add-vote', 'PostsController@addVote');
 
-Route::get('/auth/login', function () {
-    return view('auth.login');
-});
 
-Route::get('/auth/register', function () {
-    return view('auth.register');
-});
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
