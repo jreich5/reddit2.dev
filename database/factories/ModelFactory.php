@@ -23,7 +23,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->catchPhrase,
-        'content' => $faker->text(200),
+        'content' => $faker->text(2000),
         'url' => $faker->url,
         'image' => $faker->imageUrl(640, 480),
         'created_by' => $faker->numberBetween(1, 50),
