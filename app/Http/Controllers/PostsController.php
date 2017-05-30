@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 
 class PostsController extends Controller
 {
@@ -16,7 +17,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::paginate(10);
+        return view("posts.index", compact("posts"));
     }
 
     /**
@@ -48,7 +50,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view("posts.show", compact('post'));
     }
 
     /**
@@ -59,7 +62,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view("posts.edit", compact('post'));
     }
 
     /**
