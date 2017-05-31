@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\User;
+use Auth;
+use App\Helpers\HelperMethods;
 
 class PostsController extends Controller
 {
@@ -28,7 +31,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view("posts.create");
     }
 
     /**
@@ -39,7 +42,24 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request, [
+            'title' => 'required|unique:posts|max:255',
+            'url' => 'url|max:2083',
+            'image'=> 'url',
+            'content' => 'required'
+        ]);
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->url = $request->url;
+        $post->image = !empty($request->image) ? $request->image : 'http://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
+        $post->content = $request->content;
+        $post->created_by = Auth::id();
+        $post->save();
+
+        return redirect()->action('PostsController@show', $post->id);
+
     }
 
     /**
@@ -75,7 +95,15 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $post = Post::findOrFail($id);
+        $post->title = $request->title;
+        $post->image = $request->image;
+        $post->url = $request->url;
+        $post->content = $request->content;
+        $post->save();
+
+        return redirect()->action('PostsController@show', $post->id);
     }
 
     /**
@@ -86,6 +114,9 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect("/users/{$post->created_by}");
     }
 }
