@@ -6,10 +6,16 @@
 
 @section('content')
     <article>
-        <h1 class="text-center">{{ $post->title }} <small> By {{ $post->user->name }}</small></h1>
+        <h1 class="text-center">{{ $post->title }} <small>By <a href="/users/{{ $post->created_by }}">{{ $post->user->name }}</a></small></h1>
         <img class="center-block"  src="{{ $post->image }}" width="100%">
         <p>{{ $post->content }}</p>
-        <a class="btn btn-primary" href="{{ action('PostsController@edit', $post->id) }}">Edit Post</a>
+        
+        @if(Auth::id() === $post->created_by)
+
+            <a class="btn btn-primary" href="{{ action('PostsController@edit', $post->id) }}">Edit Post</a>
+
+        @endif
+
     </article>
 @stop
 
