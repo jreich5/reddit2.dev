@@ -28,18 +28,6 @@ Route::resource('posts', 'PostsController');
 // User routes
 Route::resource('users', 'UsersController');
 
-Route::get('/users', function () {
-    return view('users.index');
-});
-
-Route::get('/users/{id}/edit', function ($id) {
-    return view('users.edit');
-});
-
-Route::get('/users/{id}', function ($id) {
-    return view('users.show');
-});
-
 
 // Voting routes
 Route::post('/posts/add-vote', 'PostsController@addVote');
