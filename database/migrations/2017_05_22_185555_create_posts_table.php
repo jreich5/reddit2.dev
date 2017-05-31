@@ -14,12 +14,12 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('created_by')->unsigned(); // created by (foreign key)   
             $table->string('title');
             $table->string('url', 2083);
-            $table->binary('image'); // image
+            $table->string('image'); // image
             $table->text('content'); // content
-            $table->integer('created_by')->unsigned(); // created by (foreign key)   
-            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
