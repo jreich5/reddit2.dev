@@ -7,11 +7,17 @@
 @section('content')
 	{!! Form::open(array('url' => 'auth/login')) !!}
 	
-		{!! Form::label('email', 'E-Mail Address', array('class' => '')) !!}
-		{!! Form::text('email') !!}
-		{!! Form::label('password', 'Password', array('class' => '')) !!}
-		{!! Form::password('password') !!}
-		{!! Form::submit('Submit') !!}
+		<div class="form-group">
+			{!! Form::label('email', 'E-Mail Address') !!}
+			{!! Form::text('email', null, array('class' => 'form-control')) !!}
+		</div>
+
+		<div class="form-group">
+			{!! Form::label('password', 'Password') !!}
+			{!! Form::password('password', array('class' => 'form-control')) !!}
+		</div>
+
+		{!! Form::submit('Submit', array('class' => 'btn btn-default')) !!}
 
 	{!! Form::close() !!}
 @stop
