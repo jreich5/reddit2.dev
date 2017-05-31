@@ -21,10 +21,3 @@ footer {
     -webkit-box-orient: vertical;  
     overflow: hidden;
 }
-
-.pagination {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background-color: blue !important;
-}
