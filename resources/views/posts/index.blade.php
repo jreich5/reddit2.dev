@@ -7,11 +7,14 @@
 @section('content')
 
     <h1 class="text-center">Posts</h1>
-    
+
     <br>
 
-    @foreach($posts as $post)
+    <div id="pageNumbers">
+        {!! $posts->render() !!}
+    </div>
     
+    @foreach($posts as $post)
         <article class="row">
             <div class="col-md-4">
                 <img src="{{ $post->image }}" width="100%">
@@ -25,7 +28,7 @@
         </article>
         <hr>
     @endforeach
-    <div class="pagination">
+    <div id="pageNumbers">
         {!! $posts->render() !!}
     </div>
 
@@ -37,6 +40,10 @@
 
         .articleElement {
             float: left;
+        }
+
+        #pageNumbers {
+            text-align: center;
         }
 
     </style>
