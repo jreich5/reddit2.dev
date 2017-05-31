@@ -1,37 +1,53 @@
 @extends('layouts.master')
 
 @section('title')
-	<title>Reddit2: </title>
+    <title>Reddit2: Register</title>
 @stop
 
 @section('content')
-	{!! Form::open(array('url' => 'auth/register')) !!}
-	
-		{!! Form::label('name', 'Full Name', array('class' => '')) !!}
-		{!! Form::text('name') !!}
-		{!! Form::label('email', 'E-Mail Address', array('class' => '')) !!}
-		{!! Form::text('email') !!}
-		{!! Form::label('password', 'Password', array('class' => '')) !!}
-		{!! Form::password('password') !!}
-		{!! Form::submit('Submit') !!}
 
-	{!! Form::close() !!}
+    {!! Form::open(array('url' => '/auth/register')) !!}
+    
+        <div class="form-group">
+            {!! Form::label('name', 'Full Name') !!}
+            {!! Form::text('name', null, array('class' => 'form-control')) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('email', 'E-Mail Address') !!}
+            {!! Form::text('email', null, array('class' => 'form-control')) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('password', 'Password') !!}
+            {!! Form::password('password', array('class' => 'form-control')) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('password_confirmation', 'Password Confirmation') !!}
+            {!! Form::password('password_confirmation', array('class' => 'form-control')) !!}
+        </div>
+
+        {!! Form::submit('Submit', array('class' => 'btn btn-default')) !!}
+
+    {!! Form::close() !!}
+
 @stop
 
 @section('pageCSS')
 
-	<style type="text/css">
-		
+    <style type="text/css">
+        
 
-	</style>
+    </style>
 
 @stop
 
 @section('pageJS')
 
-	<script type="text/javascript">
-		
-		
-	</script>
+    <script type="text/javascript">
+        
+        
+    </script>
 
 @stop

@@ -1,40 +1,36 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>Reddit2: </title>
+    <title>Reddit2: Posts</title>
 @stop
 
 @section('content')
 
     <h1 class="text-center">Posts</h1>
-    
+
     <br>
 
-    <section>
-        
-        @for($i = 0; $i < 10; ++$i)
-
-            <article class="row">
-                <div class="col-md-4">
-                    <img src="http://nintendotoday.com/wp-content/uploads/2015/10/Sonic-2-2013-EHZ.jpg" width="100%">
-                </div> 
-                <div class="col-md-8">
-                    <h3><em>This is a Title</em></h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <button>Continue Reading</button>
-                </div>
-            </article>
-            <hr>
-        @endfor
-
-    </section>
+    <div id="pageNumbers">
+        {!! $posts->render() !!}
+    </div>
+    
+    @foreach($posts as $post)
+        <article class="row">
+            <div class="col-md-4">
+                <img src="{{ $post->image }}" width="100%">
+            </div> 
+            <div class="col-md-8">
+                <h3><em>{{ $post->title }}</em></h3>
+                <h4>By {{ $post->user->name }} </h4>
+                <p class="line-clamp">{{ $post->content }}</p>
+                <a class="btn btn-primary" href="{{ action('PostsController@show', $post->id) }}">Continue Reading</a>
+            </div>
+        </article>
+        <hr>
+    @endforeach
+    <div id="pageNumbers">
+        {!! $posts->render() !!}
+    </div>
 
 @stop
 
@@ -46,8 +42,8 @@
             float: left;
         }
 
-        h3 {
-            
+        #pageNumbers {
+            text-align: center;
         }
 
     </style>
@@ -58,6 +54,30 @@
 
     <script type="text/javascript">
         
+        $(document).ready(function() {
+
+            "use strict";
+
+            $('article').hover(function() {
+                $(this).css({
+                    'background-color': 'WhiteSmoke',
+                    'cursor': 'pointer'
+                });
+            }, function() {
+                $(this).css('background-color', 'white');
+            });
+
+            $('article').click(function(event) {
+                // console.log($(this).find('a').first());
+                $(this).find('a').get(0).click();
+            });
+
+            $('article a').click(function(e) {
+                e.stopPropagation();
+            });
+
+        });
+
         
     </script>
 

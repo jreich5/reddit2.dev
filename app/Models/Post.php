@@ -14,4 +14,10 @@ class Post extends Model
     ];
 
 	protected $fillable = ['title', 'url', 'image', 'content', 'created_by'];
+
+	public function user()
+    {
+        return $this->belongsTo('App\User', 'created_by', 'id');
+    }
+
 }

@@ -24,37 +24,9 @@ Route::get('/about', function () {
 // Post article routes
 Route::resource('posts', 'PostsController');
 
-Route::get('/posts', function () {
-    return view('posts.index');
-});
-
-Route::get('/posts/create', function () {
-    return view('posts.create');
-});
-
-Route::get('/posts/{id}', function ($id) {
-    return view('posts.show');
-});
-
-Route::get('/posts/{id}/edit', function ($id) {
-    return view('posts.edit');
-});
-
 
 // User routes
 Route::resource('users', 'UsersController');
-
-Route::get('/users', function () {
-    return view('users.index');
-});
-
-Route::get('/users/{id}/edit', function ($id) {
-    return view('users.edit');
-});
-
-Route::get('/users/{id}', function ($id) {
-    return view('users.show');
-});
 
 
 // Voting routes
